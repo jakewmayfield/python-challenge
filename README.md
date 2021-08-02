@@ -2,7 +2,7 @@
 
 ## Objective
 
-### Pybank
+### PyBank
 * Create a Python script to analyze the financial records of my company.
 
 * Your task is to create a Python script that analyzes the records to calculate each of the following:
