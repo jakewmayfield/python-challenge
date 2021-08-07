@@ -9,6 +9,8 @@ election_data=Path('./Resources/election_data.csv')
 total_votes=0
 candidate_list=[]
 candidate_votes=[]
+percent_of_vote=[]
+high_vote_index = 0
 
 
 #open file and skip headers
@@ -33,13 +35,34 @@ with open (election_data,'r') as csv_file:
         else:
             candidate_list.append(candidate)
             candidate_votes.append(1) 
-    
-percent_of_vote=[]
-highest_vote = candidate_votes[0]
-high_vote_index = 0
-print(total_votes)
-print(candidate_list)
-print(candidate_votes)
+
+#had to keep highest_vote list here to rightly access candidate_votes list
+highest_vote = candidate_votes[0]  
+
+#iterate through each candidate and calculate percentage and add to percent of vote list
+for c in range(len(candidate_list)):
+    percentage = candidate_votes[c]/total_votes*100
+    percent_of_vote.append(percentage)
+
+   #conditional to grab the candidate with the highest vote 
+    if candidate_votes[c] > total_votes:
+        total_votes = candidate_votes[c]
+        print(total_votes)
+        high_vote_index = c
+
+#calculate winner by indexing the highest vote with matching candidate in candidate list
+winner = candidate_list[high_vote_index]
+
+#print to terminal
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {total_votes}")
+for x in range(len(candidate_list)):
+    print(f"{candidate_list[x]}: {percent_of_vote[x]:.3f}% ({candidate_votes[x]})")
+print("---------------------------")
+print(f"Winner: {winner}")
+print("---------------------------")
+
 
     
 
