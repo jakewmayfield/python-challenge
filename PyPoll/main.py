@@ -7,7 +7,8 @@ election_data=Path('./Resources/election_data.csv')
 
 #make empty lists and variable to hold voting data
 total_votes=0
-
+candidate_list=[]
+candidate_votes=[]
 
 
 #open file and skip headers
@@ -22,31 +23,24 @@ with open (election_data,'r') as csv_file:
         #count total votes
         total_votes+=1
 
-        #add candidates to candidate list
-        candidate_list.append(row[2])
+        #grab each candidate
+        candidate=row[2]
 
-    #extract each candidate's vote count & divide by total votes for percent
-    khan= [x for x in candidate_list if x=="Khan"] 
-    print(len(khan))
-    khan_percent = len(khan)/total_votes
-    print(khan_percent)
+        #count each vote for each candidate
+        if candidate in candidate_list:
+            c_index = candidate_list.index(candidate)
+            candidate_votes[c_index]+=1
+        else:
+            candidate_list.append(candidate)
+            candidate_votes.append(1) 
+    
+percent_of_vote=[]
+highest_vote = candidate_votes[0]
+high_vote_index = 0
+print(total_votes)
+print(candidate_list)
+print(candidate_votes)
 
-    li= [x for x in candidate_list if x=="Li"] 
-    print(len(li))
-    li_percent = len(li)/total_votes
-    print(li_percent)
-
-    correy= [x for x in candidate_list if x=="Correy"] 
-    print(len(correy))
-    correy_percent = len(correy)/total_votes
-    print(correy_percent)
-
-    o_tooley= [x for x in candidate_list if x=="O'Tooley"] 
-    print(len(o_tooley))
-    o_tooley_percent = len(o_tooley)/total_votes
-    print(o_tooley_percent)
-
-if khan_percent>li_lercent and khan_percent>correy_percent and khan_percent>o_tooley_percent:
     
 
     
