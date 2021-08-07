@@ -1,6 +1,5 @@
 #import dependencies
 import csv
-import os
 
 #get csv file path and make a variable
 from pathlib import Path
