@@ -68,6 +68,7 @@ with open (analysis_file, 'w') as export:
     export.write("\n")
     export.write(f"Greatest Decrease in Profits: {total_months[GD_month]} (${(str(greatest_decrease))})")
 
+export.close()
 
 
 

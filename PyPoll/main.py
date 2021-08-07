@@ -63,6 +63,23 @@ print("---------------------------")
 print(f"Winner: {winner}")
 print("---------------------------")
 
+#set export file path & send to Analysis folder (found better new line technique)
+analysis_file = Path('./Analysis/election_data_analysis.txt')
+
+with open (analysis_file,'w') as export:
+
+    export.write("Election Results\n")
+    export.write("--------------------------\n")
+    export.write(f"Total Votes: {total_votes}\n")
+    for x in range(len(candidate_list)):
+        export.write(f"{candidate_list[x]}: {percent_of_vote[x]:.3f}% ({candidate_votes[x]})\n")
+    export.write("---------------------------\n")
+    export.write(f"Winner: {winner}\n")
+    export.write("---------------------------\n")
+
+#close file
+export.close()
+
 
     
 
